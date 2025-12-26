@@ -1,7 +1,7 @@
 -- File: my_messages.lua
 return {
-    "Halo Salam Saya Dari Owner",
-    "Mohon Jangan Cepu",
-    "maaf ya",
-    "Script Ini Asli Buatan Owner, Jangan Mau Dibohongi Sama Sc Kw😂"
+    "Wsp Boy Saya Owner Ytta",
+    "Yg Cepu Kontol",
+    "Gabung Dc Wave Ya",
+    "Jangan Mau Dibohongi Sama Sc Kw😂"
 }
