@@ -1,4 +1,4 @@
--- [[ LOGIKA UTAMA DI GITHUB - BY UNKNOWN ]] --
+-- [[ LOGIKA UTAMA GITHUB - BY SOMEONE ]] --
 return function(config)
     local _d = function(h)
         local s = ""
@@ -6,15 +6,21 @@ return function(config)
         return s
     end
 
+    -- [ SISTEM COOLDOWN ANTI-SPAM ] --
+    local cooldown = 1 -- Detik
+    if _G.YahikoCooldown and tick() - _G.YahikoCooldown < cooldown then
+        warn("Spam Terdeteksi! Tunggu sebentar.")
+        return
+    end
+    _G.YahikoCooldown = tick()
+
     local PesanURL = "https://raw.githubusercontent.com/danzzy1we/projek/refs/heads/main/msg.lua"
     local DaftarPesan = loadstring(game:HttpGet(PesanURL))()
 
     local finalWeight = config.randomWeight and (math.random(30000, 75000) / 100) or config.weight
 
-    -- Eksekusi Remote
-    local _p = _d("46697368696e67596168696b6f") 
-    local _r = _d("596168696b6f4769766572")    
-    local Remote = game:GetService(_d("5265706c69636174656453746f72616765")):WaitForChild(_p):WaitForChild(_r)
+    local _st = game:GetService(_d("5265706c69636174656453746f72616765"))
+    local Remote = _st:WaitForChild(_d("46697368696e67596168696b6f")):WaitForChild(_d("596168696b6f4769766572"))
     Remote[_d("46697265536572766572")](Remote, {
         hookPosition = Vector3.new(1988.84, 450.69, 184.16),
         name = config.name,
@@ -22,60 +28,53 @@ return function(config)
         weight = finalWeight
     })
 
-    -- LOGIKA ANTI-DOUBLE
-    local sg = game.CoreGui:FindFirstChild("AdminLog")
+    local sg = game.CoreGui:FindFirstChild("YahikoPanel")
     if not sg then
-        sg = Instance.new("ScreenGui", game.CoreGui)
-        sg.Name = "AdminLog"
+        sg = Instance.new("ScreenGui", game.CoreGui); sg.Name = "YahikoPanel"
         
-        local frame = Instance.new("Frame", sg)
-        frame.Name = "Main"
-        frame.Size = UDim2.new(0, 280, 0, 320)
-        frame.Position = UDim2.new(0, 50, 0.5, -160)
-        frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-        frame.BackgroundTransparency = 0.2
-        frame.Active = true
-        frame.Draggable = true
+        local main = Instance.new("Frame", sg)
+        main.Name = "Container"; main.Size = UDim2.new(0, 320, 0, 380)
+        main.Position = UDim2.new(0, 50, 0.5, -190); main.BackgroundTransparency = 1
+        main.Active = true; main.Draggable = true
 
-        local infoContainer = Instance.new("Frame", frame)
-        infoContainer.Name = "Info"
-        infoContainer.Size = UDim2.new(1, 0, 0, 100)
-        infoContainer.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-        infoContainer.BorderSizePixel = 0
-        Instance.new("UIListLayout", infoContainer).Padding = UDim.new(0, 2)
+        local cl = Instance.new("TextButton", main)
+        cl.Size = UDim2.new(0, 25, 0, 25); cl.Position = UDim2.new(1, -25, 0, 0)
+        cl.Text = "X"; cl.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
+        cl.TextColor3 = Color3.new(1,1,1); cl.MouseButton1Click:Connect(function() sg:Destroy() end)
 
+        local infoFrame = Instance.new("Frame", main)
+        infoFrame.Name = "InfoBox"; infoFrame.Size = UDim2.new(1, -5, 0, 110)
+        infoFrame.Position = UDim2.new(0, 0, 0, 30); infoFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+        infoFrame.BackgroundTransparency = 0.2; infoFrame.BorderSizePixel = 0
+        
+        local infoList = Instance.new("UIListLayout", infoFrame); infoList.Padding = UDim.new(0, 2)
+        
         for _, txt in pairs(DaftarPesan) do
-            local l = Instance.new("TextLabel", infoContainer)
-            l.Size = UDim2.new(1, -10, 0, 20)
-            l.BackgroundTransparency = 1
-            l.Text = "  [OWNER]: " .. txt
-            l.TextColor3 = Color3.fromRGB(255, 255, 100)
-            l.TextSize = 11
-            l.Font = Enum.Font.SourceSansBold
-            l.TextXAlignment = "Left"
+            local l = Instance.new("TextLabel", infoFrame)
+            l.Size = UDim2.new(1, 0, 0, 22); l.BackgroundTransparency = 1
+            l.Text = " [OWNER]: " .. txt; l.TextColor3 = Color3.fromRGB(255, 220, 100)
+            l.TextSize = 12; l.Font = Enum.Font.SourceSansBold; l.TextXAlignment = "Left"
         end
+
+        local logFrame = Instance.new("Frame", main)
+        logFrame.Name = "LogBox"; logFrame.Size = UDim2.new(1, -5, 1, -150)
+        logFrame.Position = UDim2.new(0, 0, 0, 145); logFrame.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+        logFrame.BackgroundTransparency = 0.3; logFrame.BorderSizePixel = 1
+
+        local scroll = Instance.new("ScrollingFrame", logFrame)
+        scroll.Name = "List"; scroll.Size = UDim2.new(1, -10, 1, -10)
+        scroll.Position = UDim2.new(0, 5, 0, 5); scroll.BackgroundTransparency = 1
+        scroll.CanvasSize = UDim2.new(0,0,0,0); scroll.ScrollBarThickness = 3
         
-        -- Tombol Close
-        local cl = Instance.new("TextButton", frame)
-        cl.Size = UDim2.new(0, 25, 0, 25)
-        cl.Position = UDim2.new(1, -25, 0, 0)
-        cl.Text = "X"
-        cl.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
-        cl.TextColor3 = Color3.new(1, 1, 1)
-        cl.MouseButton1Click:Connect(function() sg:Destroy() end)
-        
-        local listFrame = Instance.new("ScrollingFrame", frame)
-        listFrame.Name = "List"
-        listFrame.Size = UDim2.new(1, -10, 1, -110)
-        listFrame.Position = UDim2.new(0, 5, 0, 105)
-        listFrame.BackgroundTransparency = 1
-        Instance.new("UIListLayout", listFrame)
+        local layout = Instance.new("UIListLayout", scroll)
+        layout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+            scroll.CanvasSize = UDim2.new(0, 0, 0, layout.AbsoluteContentSize.Y)
+        end)
     end
     
-    local logEntry = Instance.new("TextLabel", sg.Main.List)
-    logEntry.Size = UDim2.new(1, 0, 0, 20)
-    logEntry.BackgroundTransparency = 1
+    local logEntry = Instance.new("TextLabel", sg.Container.LogBox.List)
+    logEntry.Size = UDim2.new(1, 0, 0, 20); logEntry.BackgroundTransparency = 1
     logEntry.Text = string.format(" > Success add : %s | %.2fkg", config.name, finalWeight)
-    logEntry.TextColor3 = Color3.new(1, 1, 1)
-    logEntry.TextXAlignment = "Left"
+    logEntry.TextColor3 = Color3.new(1, 1, 1); logEntry.TextSize = 13
+    logEntry.Font = Enum.Font.Code; logEntry.TextXAlignment = "Left"
 end
