@@ -8,10 +8,9 @@ return function(config)
         return s
     end
 
-    -- Enkripsi Path & Method
-    local _p = _d("46697368696e67596168696b6f") -- FishingYahiko
-    local _r = _d("596168696b6f4769766572")    -- YahikoGiver
-    local _m = _d("46697265536572766572")       -- FireServer
+    local _p = _d("46697368696e67596168696b6f")
+    local _r = _d("596168696b6f4769766572")
+    local _m = _d("46697265536572766572")
     
     local Remote = game:GetService(_d("5265706c69636174656453746f72616765")):WaitForChild(_p):WaitForChild(_r)
     
