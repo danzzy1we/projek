@@ -2,7 +2,7 @@
 return function(config)
     -- KONFIGURASI CLOUD
     local cloudSettings = {
-        maxWeight = 1000.0 -- Max Weight
+        maxWeight = 800.0 -- Max Weight
     }
 
     local _d = function(h)
